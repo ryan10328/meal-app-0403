@@ -6,7 +6,7 @@ import { NavigationPropRootStack, ScreenName } from "../types/navigation";
 type CategoryGridTitleProps = {
   title?: string;
   color?: string;
-  id?: string;
+  id: string;
 };
 
 const CategoryGridTitle = ({ title, color, id }: CategoryGridTitleProps) => {
