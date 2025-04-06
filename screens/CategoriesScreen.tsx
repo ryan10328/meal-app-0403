@@ -3,14 +3,6 @@ import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTitle from "../components/CategoryGridTitle";
 import Category from "../models/category";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList, ScreenName } from "../types/navigation";
-
-type CategoriesScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  ScreenName.MealCategories
->;
 
 const renderCategoryItem = (category: ListRenderItemInfo<Category>) => {
   return (
