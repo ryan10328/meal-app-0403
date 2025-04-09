@@ -16,8 +16,9 @@ const MealsOverviewScreen = ({ route }: MealsOverviewScreenProps) => {
   const meals = MEALS.filter((meal: Meal): boolean =>
     meal.categoryIds.includes(id),
   );
-  const renderMealItem = (item: ListRenderItemInfo<Meal>) => {
-    return <MealItem title={item.item.title} />;
+  const renderMealItem = (meal: ListRenderItemInfo<Meal>) => {
+    const props = { ...meal.item };
+    return <MealItem {...props} />;
   };
 
   return (
