@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -29,9 +29,6 @@ export default function App() {
           <Stack.Screen
             name={ScreenName.MealsOverview}
             component={MealsOverviewScreen}
-            options={{
-              title: "Meals Overview",
-            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
