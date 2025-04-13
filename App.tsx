@@ -5,6 +5,7 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import { RootStackParamList, ScreenName } from "./types/navigation";
 import MealDetailScreen from "./screens/MealDetailScreen";
+import { Button } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

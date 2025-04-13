@@ -1,5 +1,12 @@
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  Button,
+} from "react-native";
+import React, { useLayoutEffect } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList, ScreenName } from "../types/navigation";
 import { MEALS } from "../data/dummy-data";
@@ -12,9 +19,19 @@ type MealDeailProps = NativeStackScreenProps<
   ScreenName.MealDetail
 >;
 
-const MealDetailScreen = ({ route }: MealDeailProps) => {
+const MealDetailScreen = ({ route, navigation }: MealDeailProps) => {
   const id = route.params.id;
   const meal = MEALS.find((item) => item.id === id);
+
+  const handlePress = () => {};
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <Button title="Tap Me!" onPress={handlePress} />;
+      },
+    });
+  }, [navigation, handlePress]);
 
   return (
     <ScrollView style={styles.rootContainer}>
