@@ -3,11 +3,15 @@ import { NavigationProp } from "@react-navigation/native";
 export const enum ScreenName {
   MealCategories = "MealCategories",
   MealsOverview = "MealsOverview",
+  MealDetail = "MealDetail",
 }
 
 export type RootStackParamList = {
   [ScreenName.MealCategories]: undefined;
   [ScreenName.MealsOverview]: {
+    id: string;
+  };
+  [ScreenName.MealDetail]: {
     id: string;
   };
 };

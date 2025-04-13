@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   Image,
@@ -7,8 +8,11 @@ import {
   Text,
   View,
 } from "react-native";
+import { RootStackParamList, ScreenName } from "../types/navigation";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type MealItemProps = {
+  id: string;
   title: string;
   imageUrl: string;
   duration: number;
@@ -16,18 +20,28 @@ type MealItemProps = {
   affordability: string;
 };
 
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
 const MealItem = ({
+  id,
   title,
   imageUrl,
   duration,
   complexity,
   affordability,
 }: MealItemProps) => {
+  const navigation = useNavigation<NavigationProps>();
+
+  const handlePress = () => {
+    navigation.navigate(ScreenName.MealDetail, { id: id });
+  };
+
   return (
     <View style={styles.mealItem}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => [pressed ? styles.buttonPressed : null]}
+        onPress={handlePress}
       >
         <View style={styles.innerContainer}>
           <Image source={{ uri: imageUrl }} style={styles.image} />
