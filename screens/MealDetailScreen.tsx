@@ -1,9 +1,11 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList, ScreenName } from "../types/navigation";
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
+import Subtitle from "../components/MealDetail/Subtitle";
+import List from "../components/MealDetail/List";
 
 type MealDeailProps = NativeStackScreenProps<
   RootStackParamList,
@@ -12,27 +14,54 @@ type MealDeailProps = NativeStackScreenProps<
 
 const MealDetailScreen = ({ route }: MealDeailProps) => {
   const id = route.params.id;
-  const selectedMeal = MEALS.find((item) => item.id === id);
+  const meal = MEALS.find((item) => item.id === id);
 
   return (
-    <View>
-      <Image source={{ uri: selectedMeal?.imageUrl }} />
-      <Text>{selectedMeal?.title}</Text>
+    <ScrollView style={styles.rootContainer}>
+      <Image style={styles.image} source={{ uri: meal?.imageUrl }} />
+      <Text style={styles.title}>{meal?.title}</Text>
       <MealDetails
-        duration={selectedMeal?.duration}
-        complexity={selectedMeal?.complexity}
-        affordability={selectedMeal?.affordability}
+        duration={meal?.duration}
+        complexity={meal?.complexity}
+        affordability={meal?.affordability}
+        textStyle={styles.detailText}
       />
-      <Text>Ingredients</Text>
-      {selectedMeal?.ingredients.map((ingredient) => {
-        return <Text key={ingredient}>{ingredient}</Text>;
-      })}
-      <Text>Steps</Text>
-      {selectedMeal?.steps.map((step) => {
-        return <Text key={step}>{step}</Text>;
-      })}
-    </View>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List items={meal?.ingredients} />
+          <Subtitle>Steps</Subtitle>
+          <List items={meal?.steps} />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default MealDetailScreen;
+
+const styles = StyleSheet.create({
+  rootContainer: {
+    marginBottom: 32,
+  },
+  image: {
+    width: "100%",
+    height: 350,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 24,
+    margin: 8,
+    textAlign: "center",
+    color: "white",
+  },
+  detailText: {
+    color: "white",
+  },
+  listOuterContainer: {
+    alignItems: "center",
+  },
+  listContainer: {
+    width: "80%",
+  },
+});
