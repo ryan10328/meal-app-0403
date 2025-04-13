@@ -18,3 +18,8 @@ export type RootStackParamList = {
 
 // the type we will apply on useNavigation<T>
 export type NavigationPropRootStack = NavigationProp<RootStackParamList>;
+
+export const enum DrawerScreenName {
+  MealCategories = "MealCategories",
+  Favorite = "Favorite",
+}
