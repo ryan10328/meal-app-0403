@@ -13,6 +13,7 @@ import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
+import IconButton from "../components/IconButton";
 
 type MealDeailProps = NativeStackScreenProps<
   RootStackParamList,
@@ -23,12 +24,21 @@ const MealDetailScreen = ({ route, navigation }: MealDeailProps) => {
   const id = route.params.id;
   const meal = MEALS.find((item) => item.id === id);
 
-  const handlePress = () => {};
+  const handlePress = () => {
+    console.log("pressed...");
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Tap Me!" onPress={handlePress} />;
+        return (
+          <IconButton
+            onPress={handlePress}
+            name="star"
+            size={24}
+            color="white"
+          />
+        );
       },
     });
   }, [navigation, handlePress]);
