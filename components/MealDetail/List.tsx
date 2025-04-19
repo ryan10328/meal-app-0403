@@ -6,10 +6,10 @@ type ListProps = {
 };
 
 const List = ({ items }: ListProps) => {
-  return items?.map((item) => {
+  return items?.map((text) => {
     return (
-      <View key={item} style={styles.listItem}>
-        <Text style={styles.itemText}>{item}</Text>;
+      <View key={text} style={styles.listItem}>
+        <Text style={styles.itemText}>{text}</Text>;
       </View>
     );
   });

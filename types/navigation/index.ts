@@ -20,6 +20,6 @@ export type RootStackParamList = {
 export type NavigationPropRootStack = NavigationProp<RootStackParamList>;
 
 export const enum DrawerScreenName {
-  MealCategories = "MealCategories",
+  Categories = "Categories",
   Favorite = "Favorite",
 }

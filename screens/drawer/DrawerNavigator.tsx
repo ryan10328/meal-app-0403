@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerScreenName } from "../../types/navigation";
 import CategoriesScreen from "../CategoriesScreen";
-import FavoriteScreen from "../FavoriteScreen";
+import FavoritesScreen from "../FavoritesScreen";
 import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
@@ -21,7 +21,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen
         component={CategoriesScreen}
-        name={DrawerScreenName.MealCategories}
+        name={DrawerScreenName.Categories}
         options={{
           title: "All Categories",
           drawerIcon: ({ color, size }) => {
@@ -30,7 +30,7 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        component={FavoriteScreen}
+        component={FavoritesScreen}
         name={DrawerScreenName.Favorite}
         options={{
           title: "Favorites",
